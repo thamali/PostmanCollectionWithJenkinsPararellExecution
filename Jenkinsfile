@@ -20,28 +20,17 @@ pipeline {
             parallel {
                 stage('Pull GoRest Image') {
                     steps {
-                        bat 'docker pull thama89/gorestapi:1.1'
-                    }
-                }
-                stage('Pull Booking Image') {
-                    steps {
-                    bat 'docker pull naveenkhunteta/mybookingapi:1.0'
+                        bat 'docker pull thama89/gorestddtest:1.1'
                     }
                 }
             }
         }
 
-
         stage('Run API Test Cases in Parallel') {
             parallel {
                 stage('Run GoRest Tests') {
                     steps {
-                        bat 'docker run --rm -v %WORKSPACE%\\newman:/app/results thama89/gorestapi:1.1'
-                    }
-                }
-                stage('Run Booking Tests') {
-                    steps {
-                        bat 'docker run --rm -v %WORKSPACE%\\newman:/app/results naveenkhunteta/mybookingapi:1.0'
+                        bat 'docker run -v %WORKSPACE%\\newman:/app/results thama89/gorestddtest:1.1'
                     }
                 }
             }
@@ -62,19 +51,7 @@ pipeline {
                         ])
                     }
                 }
-                stage('Publish Booking Report') {
-                    steps {
-                        publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: false,
-                            keepAll: true,
-                            reportDir: 'newman',
-                            reportFiles: 'booking.html',
-                            reportName: 'Booking API Report',
-                            reportTitles: ''
-                        ])
-                    }
-                }
+                
             }
         }
 
