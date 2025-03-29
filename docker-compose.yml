@@ -2,11 +2,11 @@ version: '3.8'
 
 services:
   gorest:
-    image: naveenkhunteta/gorestddtest:1.0
+    image: thama89/gorestddtest:1.1
     volumes:
       - ./results:/app/results
 
   booking:
-    image: naveenkhunteta/mybookingapi:1.0
+    image: thama89/bookingapi:1.0
     volumes:
-      - ./results:/app/results
+      - ./results:/app/newman
