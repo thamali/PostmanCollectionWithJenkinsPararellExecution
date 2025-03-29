@@ -14,12 +14,6 @@ pipeline {
             }
         }
 
-         stage('Checkout Code') {
-            steps {
-                git 'https://github.com/thamali/PostmanCollectionWithJenkinsPararellExecution.git'
-            }
-        }
-
         stage('Pull Docker Images') {
             parallel {
                 stage('Pull GoRest Image') {
@@ -95,7 +89,7 @@ pipeline {
         
         stage('Cleanup') {
             steps {
-                sh 'docker-compose down'
+                bat 'docker-compose down'
             }
         }
         
