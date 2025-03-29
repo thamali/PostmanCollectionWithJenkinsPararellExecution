@@ -33,7 +33,7 @@ pipeline {
 
         stage('Prepare Newman Results Directory') {
             steps {
-                bat 'mkdir newman' 
+                bat 'if not exist "%WORKSPACE%\\newman" mkdir "%WORKSPACE%\\newman"' 
             }
         }
 
@@ -46,7 +46,7 @@ pipeline {
                 }
                 stage('Run Booking Tests') {
                     steps {
-                        bat 'docker run -v %WORKSPACE%\\newman:/app/results thama89/bookingapi:1.0'
+                        bat 'docker run -v %WORKSPACE%\\newman:/app/newman thama89/bookingapi:1.0'
                     }
                 }
             }
