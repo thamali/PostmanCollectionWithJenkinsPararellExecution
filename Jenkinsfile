@@ -40,8 +40,8 @@ pipeline {
                 stage('Run GoRest and bookingapi Tests') {
                     steps {
                         
-                        bat 'docker-compose up -d --build'
-                        bat 'docker-compose log -f'
+                        bat 'docker-compose up'
+                       // bat 'docker-compose log -f'
         
                         //bat 'docker run -v %WORKSPACE%\\newman:/app/results thama89/gorestddtest:1.1'
                     }
