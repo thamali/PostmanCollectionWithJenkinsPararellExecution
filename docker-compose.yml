@@ -4,9 +4,9 @@ services:
   gorest:
     image: thama89/gorestddtest:1.1
     volumes:
-      - ./newman:/app/results
+      - ./results:/app/results
 
   booking:
     image: thama89/bookingapi:1.0
     volumes:
-      - ./newman:/app/newman
+      - ./results:/app/newman
